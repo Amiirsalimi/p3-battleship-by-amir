@@ -1,6 +1,17 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+""" 
+Code explination:
+    Creating a Warship game with python using object oriented programming principles
+Game rules:
+    user can choose the grid size (or map size) of the game,
+    if user chooses 8 or 9 as the grid size ship sizes would be 1 
+    if user chooses 10 to 20 as the grid size ship sizes would be based on the original board game from 5 to 2 squares
+    the terminal is 24 rows high so the maximum hight and weidth of the game is 20 to better mach the screen
+    you can exit the game at any time with pressing Q as row or col.
+    
+"""
 
 import random
 import time
@@ -51,7 +62,7 @@ class Ship:
         # Number of hits taken by the ship
         self.hits = 0
 
-        def is_sunk(self):
+    def is_sunk(self):
         # Return True if the ship is sunk, False otherwise(return 0 for False and a number for True)
         return self.hits == self.size
 
@@ -69,7 +80,7 @@ class Board:
         # Number of shots fired on the board
         self.shots = 0
 
-        def print_board(self, show_ships):
+    def print_board(self, show_ships):
         # Print the board with row and column labels
         # If show_ships is True, show the ships as "O", otherwise hide them as "."
         # Space for row labels
@@ -103,7 +114,7 @@ class Board:
                     print(".", end=" ")
             print()
 
-            def place_ship(self, ship):
+    def place_ship(self, ship):
         # Place a ship on the board randomly and update its coordinates
         while True:
             # Choose a random orientation (vertical or horizontal) and position
@@ -136,7 +147,7 @@ class Board:
 
                     break  # Break out of the loop
 
-                def fire(self, row, col):
+    def fire(self, row, col):
         # Fire a shot at a given cell and return True if it hits a ship, False otherwise
         # Increment the number of shots
         self.shots += 1
@@ -165,7 +176,7 @@ class Board:
             print("Miss!")
             return False
 
-            def all_sunk(self):
+    def all_sunk(self):
         # Return True if all ships are sunk, False otherwise
         return all(ship.is_sunk() for ship in self.ships)
 
@@ -180,11 +191,11 @@ class Game:
         # Board object for the computer's ships
         self.computer_board = None
 
-        def choose_board_size(self):
+    def choose_board_size(self):
         # Ask the user to choose a board size between 8 and 20 and return it
         while True:
             try:
-                size = int(input("Choose a board size between 8 and 20:\n"))
+                size = int(input("Choose a board size between 8 and 20: "))
                 if 8 <= size <= 20:
                     return size
                 else:
@@ -217,14 +228,14 @@ class Game:
             self.computer_board.place_ship(ship)
             self.computer_board.ships.append(ship)
 
-            def get_row_col(self):
+    def get_row_col(self):
         # Ask the user to enter a row and a column and return them as integers
         while True:
             try:
                 row = input("Enter a row: ").upper()
                 if row == "Quit":
                     break
-                col = input("Enter a column:\n")
+                col = input("Enter a column: ")
                 if col == "Quit" or col == "quit":
                     break
                 if len(row) == 1 and row.isalpha() and col.isnumeric():
@@ -240,7 +251,7 @@ class Game:
             except ValueError:
                 print("Invalid input. Try again.")
 
- def computer_fire(self):
+    def computer_fire(self):
         # Let the computer fire a random shot at the player's board and return True if it hits a ship, False otherwise
         while True:
             # Choose a random row and column
@@ -254,7 +265,7 @@ class Game:
         # Fire a shot at the given cell
         return self.player_board.fire(row, col)
 
-def play(self):
+    def play(self):
         # Play the game until all ships are sunk or the user quits
         print("Welcome to Battleship!")
         print(
@@ -280,7 +291,7 @@ def play(self):
                 print("goodbye")
                 return
 
-                 # Fire a shot at the computer's board
+            # Fire a shot at the computer's board
             self.computer_board.fire(row, col)
             if not self.computer_board.all_sunk():
                 # If the computer still has ships left
