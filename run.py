@@ -216,3 +216,27 @@ class Game:
             self.player_board.ships.append(ship)
             self.computer_board.place_ship(ship)
             self.computer_board.ships.append(ship)
+
+            def get_row_col(self):
+        # Ask the user to enter a row and a column and return them as integers
+        while True:
+            try:
+                row = input("Enter a row: ").upper()
+                if row == "Quit":
+                    break
+                col = input("Enter a column: ")
+                if col == "Quit" or col == "quit":
+                    break
+                if len(row) == 1 and row.isalpha() and col.isnumeric():
+                    # Convert letter to number
+                    row = ord(row) - 65
+                    col = int(col) - 1
+                    if 0 <= row < self.board_size and 0 <= col < self.board_size:
+                        return row, col
+                    else:
+                        print("Invalid row or column. Try again.")
+                else:
+                    print("Invalid input. Try again.")
+            except ValueError:
+                print("Invalid input. Try again.")
+
