@@ -184,7 +184,7 @@ class Game:
         # Ask the user to choose a board size between 8 and 20 and return it
         while True:
             try:
-                size = int(input("Choose a board size between 8 and 20: "))
+                size = int(input("Choose a board size between 8 and 20:\n"))
                 if 8 <= size <= 20:
                     return size
                 else:
@@ -224,7 +224,7 @@ class Game:
                 row = input("Enter a row: ").upper()
                 if row == "Quit":
                     break
-                col = input("Enter a column: ")
+                col = input("Enter a column:\n")
                 if col == "Quit" or col == "quit":
                     break
                 if len(row) == 1 and row.isalpha() and col.isnumeric():
