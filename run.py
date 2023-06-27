@@ -27,7 +27,7 @@ def animation():
         "[        ]",
     ]
 
-        notcomplete = True
+    notcomplete = True
     i = 0
     wait_time = random.randint(1, 4)
     timeout = time.time() + wait_time
@@ -38,3 +38,15 @@ def animation():
         if time.time() > timeout:
             break
     print()
+
+
+# Define a class for the ships
+class Ship:
+    def __init__(self, name, size):
+        # ship object has a name and size and cordinate and it check sinking status
+        self.name = name
+        self.size = size
+        # List of coordinates occupied by the ship
+        self.coords = []
+        # Number of hits taken by the ship
+        self.hits = 0
