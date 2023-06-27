@@ -23,7 +23,7 @@ The app is written in python and is run on heroku platform in a terminal.
 # User Interface
 There is not a special interface, since the app is run on the terminal and no front-end languages were used.
 # Technologies used
-### Python3
+### Python
 As the language.
 ### Codeanywhere
 As the IDE. However, 70% into the project, my workspace would not open.
@@ -36,6 +36,10 @@ As a platform to keep the project files.
 
 # Testing
 I used an online tool to control my code with PEP8.
+
+# Issues during development
+I had many issues with the codeanywhere platform, same as my last project I got disconnected many times and 70% through the project, my workspace would not open. Luckily, since I had experience from last time. I had a copy of the code, in case anything similar too my last project happpens. I then created the repository again and opened a new workspace on Gitpod which I then used to finish the project.
+
 
 # Deployment
 I used Github to store the app files.
