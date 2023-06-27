@@ -164,3 +164,18 @@ class Board:
             animation()
             print("Miss!")
             return False
+
+            def all_sunk(self):
+        # Return True if all ships are sunk, False otherwise
+        return all(ship.is_sunk() for ship in self.ships)
+
+
+# Define a class for the game
+class Game:
+    def __init__(self):
+        # Size of the board chosen by the user
+        self.board_size = 0
+        # Board object for the player's ships
+        self.player_board = None
+        # Board object for the computer's ships
+        self.computer_board = None
