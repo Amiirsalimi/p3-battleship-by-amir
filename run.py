@@ -266,6 +266,7 @@ class Game:
         return self.player_board.fire(row, col)
 
     def play(self):
+        
         # Play the game until all ships are sunk or the user quits
         print("Welcome to Battleship!")
         print(
