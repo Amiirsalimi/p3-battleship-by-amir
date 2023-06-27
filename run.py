@@ -279,3 +279,22 @@ def play(self):
             except TypeError:
                 print("goodbye")
                 return
+
+                 # Fire a shot at the computer's board
+            self.computer_board.fire(row, col)
+            if not self.computer_board.all_sunk():
+                # If the computer still has ships left
+                # Let the computer fire a shot at the player's board
+                self.computer_fire()
+        # If the player has no ships left
+        if self.player_board.all_sunk():
+            print("\nYou lose! The computer sunk all your ships!")
+        # If the computer has no ships left
+        else:
+            print("\nYou win! You sunk all the computer's ships!")
+        print(f"You used {self.computer_board.shots} shots.")
+
+
+# create a game object and use the play method to start the game.
+game = Game()
+game.play()
