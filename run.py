@@ -253,3 +253,29 @@ class Game:
         print(f"Computer fires at {chr(row+65)}{col+1}")
         # Fire a shot at the given cell
         return self.player_board.fire(row, col)
+
+def play(self):
+        # Play the game until all ships are sunk or the user quits
+        print("Welcome to Battleship!")
+        print(
+            "Your objective is to sink all the computer's ships before it sinks yours."
+        )
+        print("You can type 'quit' at any time to leave the game.")
+        # Create the boards and place the ships
+        self.create_boards()
+        while not (self.player_board.all_sunk() or self.computer_board.all_sunk()):
+            # While there are still ships left on both sides
+            print("\nYour board:")
+            self.player_board.print_board(True)
+            # Print the player's board with ships visible
+            print("\nComputer's board:")
+            self.computer_board.print_board(False)
+            # Print the computer's board with ships hidden
+            print(f"\nShots fired by you: {self.computer_board.shots}")
+            print(f"Shots fired by computer: {self.player_board.shots}")
+            # Get the row and column from the user
+            try:
+                row, col = self.get_row_col()
+            except TypeError:
+                print("goodbye")
+                return
