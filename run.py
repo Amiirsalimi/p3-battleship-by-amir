@@ -179,3 +179,40 @@ class Game:
         self.player_board = None
         # Board object for the computer's ships
         self.computer_board = None
+
+        def choose_board_size(self):
+        # Ask the user to choose a board size between 8 and 20 and return it
+        while True:
+            try:
+                size = int(input("Choose a board size between 8 and 20: "))
+                if 8 <= size <= 20:
+                    return size
+                else:
+                    print("Invalid size. Try again.")
+            except ValueError:
+                print("Invalid input. Try again.")
+
+    def create_boards(self):
+        # Create two boards with the chosen size and place the ships on them
+        self.board_size = self.choose_board_size()
+        self.player_board = Board(self.board_size)
+        self.computer_board = Board(self.board_size)
+        # Create the ships with their names and sizes
+        # All ships are of size 1
+        if self.board_size in [8, 9]:
+            ships = [Ship("Ship", 1) for _ in range(5)]
+        # Use the original game's ship sizes
+        else:
+            ships = [
+                Ship("Aircraft Carrier", 5),
+                Ship("Battleship", 4),
+                Ship("Submarine", 3),
+                Ship("Destroyer", 3),
+                Ship("Patrol Boat", 2),
+            ]
+        # Place the ships on both boards
+        for ship in ships:
+            self.player_board.place_ship(ship)
+            self.player_board.ships.append(ship)
+            self.computer_board.place_ship(ship)
+            self.computer_board.ships.append(ship)
