@@ -68,3 +68,37 @@ class Board:
         self.ships = []
         # Number of shots fired on the board
         self.shots = 0
+
+        def print_board(self, show_ships):
+        # Print the board with row and column labels
+        # If show_ships is True, show the ships as "O", otherwise hide them as "."
+        # Space for row labels
+        print("  ", end="")
+        for i in range(self.size):
+            # Column labels
+            # If the number on the clowmn label is equal to the grid size print it
+            if i + 1 == self.size:
+                print(i + 1, end=" ")
+            else:
+                # If column number has two digits, don't show it
+                if len(str(i + 1)) != 2:
+                    print(i + 1, end=" ")
+                # Show 10 in the column number
+                elif i == 9:
+                    print(i + 1, end=" ")
+                # If the column has two digits print "-" instead
+                else:
+                    print("-", end=" ")
+
+        print()
+        for i in range(self.size):
+            # Row labels
+            print(chr(i + 65), end=" ")
+            for j in range(self.size):
+                if show_ships or self.grid[i][j] != "O":
+                    # Show the cell value unless it is a hidden ship
+                    print(self.grid[i][j], end=" ")
+                # Hide the ship as "."
+                else:
+                    print(".", end=" ")
+            print()
