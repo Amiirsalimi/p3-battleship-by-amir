@@ -102,3 +102,36 @@ class Board:
                 else:
                     print(".", end=" ")
             print()
+
+            def place_ship(self, ship):
+        # Place a ship on the board randomly and update its coordinates
+        while True:
+            # Choose a random orientation (vertical or horizontal) and position
+            orientation = random.choice(["vertical", "horizontal"])
+            if orientation == "vertical":
+                # Choose a valid row
+                row = random.randint(0, self.size - ship.size)
+                # Choose any column
+                col = random.randint(0, self.size - 1)
+                # Check if the cells are empty
+                if all(self.grid[row + i][col] == "." for i in range(ship.size)):
+                    # Place the ship and update its coordinates
+                    for i in range(ship.size):
+                        self.grid[row + i][col] = "O"
+                        ship.coords.append((row + i, col))
+                    # Break out of the loop
+                    break
+            # orientation == "horizontal"
+            else:
+                # Choose any row
+                row = random.randint(0, self.size - 1)
+                # Choose a valid column
+                col = random.randint(0, self.size - ship.size)
+                # Check if the cells are empty
+                if all(self.grid[row][col + i] == "." for i in range(ship.size)):
+                    # Place the ship and update its coordinates
+                    for i in range(ship.size):
+                        self.grid[row][col + i] = "O"
+                        ship.coords.append((row, col + i))
+
+                    break  # Break out of the loop
