@@ -135,3 +135,32 @@ class Board:
                         ship.coords.append((row, col + i))
 
                     break  # Break out of the loop
+
+                def fire(self, row, col):
+        # Fire a shot at a given cell and return True if it hits a ship, False otherwise
+        # Increment the number of shots
+        self.shots += 1
+        # Hit a ship
+        if self.grid[row][col] == "O":
+            # Mark the cell as hit
+            self.grid[row][col] = "X"
+            print("Hit!")
+            # Find which ship was hit
+            for ship in self.ships:
+                if (row, col) in ship.coords:
+                    # Increment the number of hits for that ship
+                    ship.hits += 1
+                    # Check if the ship is sunk
+                    if ship.is_sunk():
+                        animation()
+                        print(f"You sunk my {ship.name}!")
+                    # Break out of the loop
+                    break
+            return True
+        # Missed a ship
+        else:
+            # Mark the cell as missed
+            self.grid[row][col] = "#"
+            animation()
+            print("Miss!")
+            return False
