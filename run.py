@@ -240,3 +240,16 @@ class Game:
             except ValueError:
                 print("Invalid input. Try again.")
 
+ def computer_fire(self):
+        # Let the computer fire a random shot at the player's board and return True if it hits a ship, False otherwise
+        while True:
+            # Choose a random row and column
+            row = random.randint(0, self.board_size - 1)
+            col = random.randint(0, self.board_size - 1)
+            # Check if the cell has not been fired before
+            if self.player_board.grid[row][col] not in ["X", "#"]:
+                # Break out of the loop
+                break
+        print(f"Computer fires at {chr(row+65)}{col+1}")
+        # Fire a shot at the given cell
+        return self.player_board.fire(row, col)
